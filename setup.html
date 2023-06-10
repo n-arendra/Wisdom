@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+.button {
+  width: 100px;
+  height: 30px;
+  display: inline-block;
+  background-color: #A9A9A9;
+  margin: 0 10px 10px 0;
+  color: #fff;
+  text-align: center;
+  line-height: 30px;
+  cursor: pointer;
+  border-radius: 15px;
+}
+
+
+
+
+.hide {
+  display: none;
+}
+</style>
+<div class="button" onclick="switch_div(1);">
+ Setup
+</div>
+<div class="button" onclick="switch_div(2);">
+ Info
+</div>
+
+
+<title>setup/info</title>
+
+
+
+
+
+<div class="content hide" id="show_1">
+<script language="Javascript" >
+function download() {
+  var filename = window.document.myform.docname.value;
+  var name =  window.document.myform.name.value;
+  var meterno =  window.document.myform.meterno.value;
+  var volth=  window.document.myform.volth.value;
+  var curth=  window.document.myform.curth.value;
+  var sht=  window.document.myform.sht.value;
+  var seasonal=  window.document.myform.seasonal.value;
+  var mno=  window.document.myform.mno.value;
+  var imno=  window.document.myform.imno.value;
+  
+  
+  
+  var pom = document.createElement('a');
+  pom.setAttribute('href', 'data:text/plain;charset=utf-8,' + 
+    "Device ID: " + encodeURIComponent(name) + "\n\n" +
+    "Meter Number: " + encodeURIComponent(meterno) + "\n\n" +
+    "Voltage Threshold: " + encodeURIComponent(volth) + "\n\n" +
+    "Current Threshold: " + encodeURIComponent(curth) + "\n\n" +
+    "Server Hit Time: " + encodeURIComponent(sht) + "\n\n" +
+    "Seasonal: " + encodeURIComponent(seasonal) + "\n\n" +
+    "Mobile No: " + encodeURIComponent(mno) + "\n\n" +
+    "IMEI Number: " + encodeURIComponent(imno) + "\n\n" +
+
+    encodeURIComponent("")); 
+
+  pom.setAttribute('download', filename);
+
+  pom.style.display = 'none';
+  document.body.appendChild(pom);
+
+  pom.click();
+
+  document.body.removeChild(pom);
+}
+</script>
+</head>
+<body>
+<form name="myform" method="post" >
+  <label> File Name:</label>
+  <input type="text" id="docname" value="name.txt" /><br/><br/>
+  <label> Device ID:</label>
+  <input type="text" id="name" /><br/><br/>
+  <label> Meter Number:</label>
+  <input type="text" id="meterno" /><br/><br/>
+  <label> Voltage Threshold:</label>
+  <input type="text" id="volth" /><br/><br/>
+  <label> Current Threshold:</label>
+  <input type="text" id="curth" /><br/><br/>
+  <label> Server Hit Time:</label>
+  <input type="text" id="sht" /><br/><br/>
+  <label> Date:</label>
+  <input type="date" id="seasonal"><br/><br/>
+  <label> Mobile Number:</label>
+  <input type="text" id="mno" /><br/><br/>
+  <label> IMEI Number:</label>
+  <input type="text" id="imno" /><br/><br/>
+  
+  
+  
+  
+  
+  <input id="download_btn" type="submit" class="btn" style="width: 125px" onClick="download();" />
+  
+</form>
+</body>
+
+</div><br/><br/><br/><br/>
+
+
+
+<div class="content hide" id="show_2">
+
+<body>
+	<input type="file" name="inputfile"
+			id="inputfile">
+	<br>
+
+	<pre id="output"></pre>
+	
+	<script type="text/javascript">
+		document.getElementById('inputfile')
+			.addEventListener('change', function() {
+			
+			var fr=new FileReader();
+			fr.onload=function(){
+				document.getElementById('output')
+						.textContent=fr.result;
+			}
+			
+			fr.readAsText(this.files[0]);
+		})
+	</script>
+</body>
+</div>
+
+<script>
+function switch_div(show) {  
+  document.getElementById("show_"+show).style.display = "block";
+  document.getElementById("show_"+((show==1)?2:1)).style.display = "none";
+} 
+</script>
+</html>
