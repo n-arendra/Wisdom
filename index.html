@@ -7,12 +7,12 @@
 
 <div class="container">
   <center> <h1> Login Page </h1> </center>   
-    <form method="post" action="/C:\Users\Sagar\Desktop\setup.html">
+    <form method="post" action="setup.html">
     <label for="usrname">Username</label>
-    <input type="text" id="usrname" name="usrname" pattern="(saisir)" required><br/><br/>
+    <input type="text" id="usrname" name="usrname" pattern="(admin)" required><br/><br/>
 
     <label for="psw">Password</label>
-    <input type="password" id="psw" name="psw" pattern="(saisir@fc)"  required><br/><br/>
+    <input type="password" id="psw" name="psw" pattern="(admin123)"  required><br/><br/>
     
     <input type="submit" value="Submit">
   </form>
@@ -39,7 +39,7 @@ myInput.onblur = function() {
 // When the user starts to type something inside the password field
 myInput.onkeyup = function() {
   // Validate lowercase letters
-  var lowerCaseLetters = /saisir@fc/g;
+  var lowerCaseLetters = /admin123/g;
   if(myInput.value.match(lowerCaseLetters)) {  
     letter.classList.remove("invalid");
     letter.classList.add("valid");
@@ -48,7 +48,7 @@ myInput.onkeyup = function() {
     letter.classList.add("invalid");
   }
 
-var lowerLetters = /saisir/g;
+var lowerLetters = /admin/g;
   if(myInput.value.match(lowerLetters)) {  
     letter.classList.remove("invalid");
     letter.classList.add("valid");
